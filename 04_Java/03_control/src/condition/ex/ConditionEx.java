@@ -138,7 +138,7 @@ public class ConditionEx {
      *  성적 : B+
      */
     public void method5() {
-        Scanner sc = new Scanner(System.in);
+    	
         int exam;
         double score = 0;
         String grade;
@@ -299,8 +299,9 @@ public class ConditionEx {
         int mat = 0;
         int soc = 0;
         int sci = 0;
-        double score;
-        String result="";
+        double avg;
+        String subject="";
+        String result;
 
         System.out.println("점수 5개를 한번에 입력해 주십시오");
 
@@ -316,17 +317,79 @@ public class ConditionEx {
         } while ( kor < 0 || 100 < kor || eng < 0 || 100 < eng ||
                   mat < 0 || 100 < mat || soc < 0 || 100 < soc || sci < 0 || 100 < sci);
 
-        score = kor + eng + mat + soc + sci;
-        if (score/5 <60) System.out.println("FAIL [점수 : "+ score/5 +" (평균 미달)]");
-        if (kor < 40) result += " 국어";
-        if (eng < 40) result += " 영어";
-        if (mat < 40) result += " 수학";
-        if (soc < 40) result += " 사회";
-        if (sci < 40) result += " 과학";
-        if (result.length() > 3) System.out.println("FAIL [40점 미만 과목 : " + result + "]");
+        avg = (kor + eng + mat + soc + sci) /5;
+        result = "PASS [점수 : "+ avg +" / 100]";
+        if (avg < 60.0) result = "FAIL [점수 : "+ avg +" (평균 미달)]";
+        if (kor < 40) subject += " 국어";
+        if (eng < 40) subject += " 영어";
+        if (mat < 40) subject += " 수학";
+        if (soc < 40) subject += " 사회";
+        if (sci < 40) subject += " 과학";
+        if (subject.length() > 0) result = "FAIL [40점 미만 과목 : " + subject + "]";
+
+        System.out.println(result);
 
 
+        /*
+        public void practice() {
+		System.out.print("점수 입력(국 영 수 사 과) : ");
 
+		int kor = sc.nextInt(); // 국
+		int eng = sc.nextInt(); // 영
+		int mat = sc.nextInt(); // 수
+		int soc = sc.nextInt(); // 사
+ 		int sci = sc.nextInt(); // 과
+
+
+ 		// 40점 미만인 과목 검사
+ 		boolean flag = false;
+
+ 		String str = ""; // 빈칸(자료형 : String, 내용 X)
+
+ 		if(kor < 40) {
+ 			flag = true;
+ 			str += "국어 ";
+ 		}
+
+ 		if(eng < 40) {
+ 			flag = true;
+ 			str += "영어 ";
+ 		}
+
+ 		if(mat < 40) {
+ 			flag = true;
+ 			str += "수학 ";
+ 		}
+
+ 		if(soc < 40) {
+ 			flag = true;
+ 			str += "사회 ";
+ 		}
+
+ 		if(sci < 40) {
+ 			flag = true;
+ 			str += "과학 ";
+ 		}
+
+
+ 		// 40점 미만 과목이 존재하는 경우
+ 		if(flag) {
+ 			System.out.printf("FAIL [40점 미만 과목 : %s]", str);
+ 			return;
+ 		}
+
+ 		// 평균(double형 결과를 반환 받기 위해 5.0으로 나눔)
+ 		double avg = (kor + eng + mat + soc + sci) / 5.0;
+
+ 		if(avg < 60.0) {
+ 			System.out.printf("FAIL [점수 : %.1f (평균 미달)]", avg);
+ 			return; //  Early return; (중간에 메서드를 종료)
+ 		}
+
+ 		System.out.printf("PASS [점수 : %.1f / 100]", avg);
+	}
+
+        */
     }
 
 }
