@@ -4,6 +4,7 @@
 .class
 .classpath
 .project
+/bin/
 
 ### Eclipse ###
 .metadata
